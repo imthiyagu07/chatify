@@ -1,8 +1,98 @@
-import React from 'react'
+import { useState } from "react"
+import { useAuthStore } from "../store/useAuthStore";
+import { MessageCircleIcon, UserIcon, Mail, LoaderIcon } from "lucide-react";
+import { Link } from "react-router";
 
 const SignupPage = () => {
+  const [formData, setFormData] = useState({username: "", email: "", password: ""});
+  const {signup, isSigningUp} = useAuthStore()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    signup(formData);
+  };
+
   return (
-    <div>SignupPage</div>
+    <div className="bg-slate-900 flex flex-row items-center justify-center">
+      <div className="flex flex-col items-center justify-center h-screen lg:w-[50%]">
+
+        <div className="flex flex-col items-center space-y-3">
+          <MessageCircleIcon className="w-12 h-12" />
+          <h2 className="text-2xl font-bold">Create Account</h2>
+          <p>Sign up for a new account</p>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="mt-6 space-y-5 lg:w-[400px]">
+
+          <div className="flex flex-col">
+
+            <label className="text-sm mb-2">Username</label>
+
+            <div className="flex flex-row items-center justify-start w-full space-x-2 border border-solid border-slate-600 p-3 rounded-sm outline-none">
+
+              <UserIcon />
+
+              <input type="text" value={formData.username}
+              onChange={(e) => setFormData({...formData, username: e.target.value})}
+              className="outline-none border-none text-md w-full" placeholder="Enter your name" />
+
+            </div>
+
+          </div>
+
+          <div className="flex flex-col">
+
+            <label className="text-sm mb-2">Email</label>
+
+            <div className="flex flex-row items-center justify-start w-full space-x-2 border border-solid border-slate-600 p-3 rounded-sm outline-none">
+
+              <Mail />
+
+              <input type="email" value={formData.email}
+              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              className="outline-none border-none text-md w-full" placeholder="Enter your email" />
+
+            </div>
+
+          </div>
+
+          <div className="flex flex-col">
+
+            <label className="text-sm mb-2">Password</label>
+
+            <div className="flex flex-row items-center justify-start w-full space-x-2 border border-solid border-slate-600 p-3 rounded-sm outline-none">
+
+              <UserIcon />
+
+              <input type="password" value={formData.password}
+              onChange={(e) => setFormData({...formData, password: e.target.value})}
+              className="outline-none border-none text-md w-full" placeholder="Enter your password" />
+
+            </div>
+
+          </div>
+
+          <button className="bg-slate-600 p-3 rounded w-full mt-3 cursor-pointer" type="submit" disabled={isSigningUp}>
+            {isSigningUp ? (
+              <LoaderIcon className="w-full h-5 animate-spin text-center" />
+            ): "Create Account"}
+          </button>
+
+        </form>
+
+        <div className="mt-6 text-center">
+          <Link to="/login" className="text-sm">
+            Already have an account? Login
+          </Link>
+        </div>
+
+      </div>
+
+      <div className="lg:w-[50%] hidden lg:block">
+        <img src="/signup.png" alt="signup image" className="w-[700px]" />
+      </div>
+    </div>
   )
 }
 
