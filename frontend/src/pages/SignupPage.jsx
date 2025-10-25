@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useAuthStore } from "../store/useAuthStore";
-import { MessageCircleIcon, UserIcon, Mail, LoaderIcon } from "lucide-react";
+import { MessageCircleIcon, UserIcon, Mail, LoaderIcon, LockIcon } from "lucide-react";
 import { Link } from "react-router";
 
 const SignupPage = () => {
@@ -63,7 +63,7 @@ const SignupPage = () => {
 
             <div className="flex flex-row items-center justify-start w-full space-x-2 border border-solid border-slate-600 p-3 rounded-sm outline-none">
 
-              <UserIcon />
+              <LockIcon />
 
               <input type="password" value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
