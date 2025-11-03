@@ -14,7 +14,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="bg-slate-900 flex flex-row items-center justify-center">
+    <div className="bg-slate-900/50 flex flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-center h-screen lg:w-[50%]">
 
         <div className="flex flex-col items-center space-y-3">

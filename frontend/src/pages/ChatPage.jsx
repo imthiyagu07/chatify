@@ -1,4 +1,4 @@
-import { useChatStore } from "../store/ueChatStore";
+import { useChatStore } from "../store/useChatStore";
 import ProfileHeader from "../components/ProfileHeader";
 import ActiveTabSwitch from "../components/ActiveTabSwitch";
 import ChatsList from "../components/ChatsList";
@@ -11,7 +11,7 @@ const ChatPage = () => {
   return (
     <div className="flex flex-row w-full h-svh">
       {/* left side */}
-      <div className="bg-slate-900 w-[20%] p-5">
+      <div className="bg-slate-800/50 w-80 p-3 flex flex-col backdrop-blur-sm">
         <ProfileHeader />
         <ActiveTabSwitch />
         <div>
@@ -20,7 +20,7 @@ const ChatPage = () => {
       </div>
 
       {/* right side */}
-      <div className="bg-slate-950 w-[80%] p-5">
+      <div className="flex flex-col bg-slate-900/50 backdrop-blur-sm flex-1 p-5">
         { selectedUser ? <ChatContainer /> : <NoConverstationContainer />}
       </div>
     </div>
