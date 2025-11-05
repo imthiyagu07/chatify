@@ -20,7 +20,7 @@ const ChatPage = () => {
       </div>
 
       {/* right side */}
-      <div className="flex flex-col bg-slate-900/50 backdrop-blur-sm flex-1 p-5">
+      <div className="flex flex-col bg-slate-900/50 backdrop-blur-sm flex-1">
         { selectedUser ? <ChatContainer /> : <NoConverstationContainer />}
       </div>
     </div>
