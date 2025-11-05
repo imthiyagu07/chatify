@@ -15,7 +15,7 @@ const ChatsList = () => {
 
   return (
     <>
-      {chats.map(chat => {
+      {chats.map((chat) => (
         <div 
           key={chat._id}
           className="bg-cyan-500/10 p-4 rounded-lg cursor-pointer hover:bg-cyan-500/20 transition-colors"
@@ -27,9 +27,10 @@ const ChatsList = () => {
                   <img src={chat.profilePic || "/avatar.png"} alt={chat.username} />
                 </div>
               </div>
+              <h4 className="text-slate-200 font-medium truncate">{chat.username}</h4>
             </div>
         </div>
-      })}
+      ))}
     </>
   )
 }
